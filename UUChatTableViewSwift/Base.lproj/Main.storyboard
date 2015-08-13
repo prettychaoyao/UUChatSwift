@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
     </dependencies>
     <scenes>
-        <!--UUChatTableView-->
+        <!--UUChat-Swift2.0-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UUChatTableViewSwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,7 +87,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="UUChatTableView" id="Wvg-ni-VQU"/>
+                    <navigationItem key="navigationItem" title="UUChat-Swift2.0" id="Wvg-ni-VQU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="chatTableView" destination="Tlk-1f-Bsd" id="2Jx-K3-YXU"/>

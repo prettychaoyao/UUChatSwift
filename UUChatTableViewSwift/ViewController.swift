@@ -24,7 +24,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         _dataArray = NSMutableArray(array: [])
         
         for var i=0; i<20; i++ {
-            _dataArray.addObject(random()%100+5)
+            _dataArray.addObject(random()%60+5)
         }
         
         chatTableView.registerNib(UINib(nibName: "UUChatLeftMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatLeftMessageCell")

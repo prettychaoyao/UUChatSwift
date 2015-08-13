@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KHr-c8-nU1">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+    </dependencies>
+    <scenes>
+        <!--UUChatTableView-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UUChatTableViewSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tlk-1f-Bsd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="z56-Hj-CLW"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="GsI-BL-TW5"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5h-iH-3pv">
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="uCL-5q-fOZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tlk-1f-Bsd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5on-ce-O9y"/>
+                            <constraint firstItem="Tlk-1f-Bsd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CiK-Tj-chC"/>
+                            <constraint firstAttribute="trailing" secondItem="Tlk-1f-Bsd" secondAttribute="trailing" id="H2X-g5-H0T"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Tlk-1f-Bsd" secondAttribute="bottom" constant="50" id="PpY-f3-aZJ"/>
+                            <constraint firstAttribute="trailing" secondItem="i5h-iH-3pv" secondAttribute="trailing" id="XNv-fe-d84"/>
+                            <constraint firstItem="i5h-iH-3pv" firstAttribute="top" secondItem="Tlk-1f-Bsd" secondAttribute="bottom" constant="2" id="bJW-Zd-05v"/>
+                            <constraint firstItem="i5h-iH-3pv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cy0-0N-AIq"/>
+                            <constraint firstItem="Tlk-1f-Bsd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="d9U-Nq-aDJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="i5h-iH-3pv" secondAttribute="bottom" id="dGa-21-BRY"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CiK-Tj-chC"/>
+                                <exclude reference="PpY-f3-aZJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="UUChatTableView" id="Wvg-ni-VQU"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="chatTableView" destination="Tlk-1f-Bsd" id="2Jx-K3-YXU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="408" y="779"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aEv-ec-x2l">
+            <objects>
+                <navigationController id="KHr-c8-nU1" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d3j-Du-csh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9Cb-XU-bi3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ulj-yZ-Ixd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="46" y="779"/>
+        </scene>
+    </scenes>
+</document>

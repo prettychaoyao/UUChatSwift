@@ -20,7 +20,6 @@
 		F0246E511B7C96F4007347D6 /* UUChatRightMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E4F1B7C96F4007347D6 /* UUChatRightMessageCell.swift */; };
 		F0246E521B7C96F4007347D6 /* UUChatRightMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */; };
 		F05A18001B7CB45200CC5E6B /* UUInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */; };
-		F05A18021B7CB46200CC5E6B /* UUInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F05A18011B7CB46200CC5E6B /* UUInputView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +60,6 @@
 		F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UUChatRightMessageCell.xib; sourceTree = "<group>"; };
 		F0246E531B7C9FA3007347D6 /* UUChatTableViewSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UUChatTableViewSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUInputView.swift; sourceTree = "<group>"; };
-		F05A18011B7CB46200CC5E6B /* UUInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UUInputView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +149,6 @@
 				F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */,
 				F0246E4D1B7C9625007347D6 /* UUChatContentButton.swift */,
 				F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */,
-				F05A18011B7CB46200CC5E6B /* UUInputView.xib */,
 			);
 			path = UUChat;
 			sourceTree = "<group>";
@@ -263,7 +260,6 @@
 				F0246E481B7C91F3007347D6 /* UUChatLeftMessageCell.xib in Resources */,
 				F0246E1D1B7C90DC007347D6 /* LaunchScreen.storyboard in Resources */,
 				F0246E521B7C96F4007347D6 /* UUChatRightMessageCell.xib in Resources */,
-				F05A18021B7CB46200CC5E6B /* UUInputView.xib in Resources */,
 				F0246E1A1B7C90DC007347D6 /* Assets.xcassets in Resources */,
 				F0246E181B7C90DC007347D6 /* Main.storyboard in Resources */,
 			);

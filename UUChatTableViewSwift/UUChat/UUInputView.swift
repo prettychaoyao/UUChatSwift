@@ -15,5 +15,10 @@ class UUInputView: UIView {
     @IBOutlet weak var rightButton: UIButton!
     
     @IBOutlet weak var contentTextField: UITextField!
-
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.layer.borderWidth = 1;
+        self.layer.borderColor = UIColor.blackColor().colorWithAlphaComponent(0.1).CGColor
+    }
 }

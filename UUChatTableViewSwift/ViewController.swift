@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var inputBackView: UIView!
+    
+    @IBOutlet weak var inputViewBottomContraint: NSLayoutConstraint!
     
     var _dataArray: NSMutableArray!
     
@@ -21,7 +24,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         _dataArray = NSMutableArray(array: [])
         
         for var i=0; i<20; i++ {
-            _dataArray.addObject(i%3==1 ? "right":"left")
+            _dataArray.addObject(random()%100+5)
         }
         
         chatTableView.registerNib(UINib(nibName: "UUChatLeftMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatLeftMessageCell")
@@ -37,21 +40,21 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        if _dataArray.objectAtIndex(indexPath.row).isEqual("right"){
+        let num: NSInteger! = _dataArray.objectAtIndex(indexPath.row) as! NSInteger
+        if num > 50{
             let cell:UUChatRightMessageCell = tableView.dequeueReusableCellWithIdentifier("UUChatRightMessageCell") as! UUChatRightMessageCell
-            cell.configUIWithModel();
+            cell.configUIWithModel(num);
             return cell;
         }
         else {
             let cell:UUChatLeftMessageCell = tableView.dequeueReusableCellWithIdentifier("UUChatLeftMessageCell") as! UUChatLeftMessageCell
-            cell.configUIWithModel();
+            cell.configUIWithModel(num);
             return cell;
         }
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return  CGFloat(random()%200) + 100.0;
-//    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.view.endEditing(true)
+    }
 }
 

@@ -16,9 +16,7 @@ class UUChatLeftMessageCell: UITableViewCell {
     @IBOutlet weak var contentButton: UIButton!
     
     @IBOutlet weak var contentLabel: UILabel!
-    
-    @IBOutlet weak var contentHeightContraint: NSLayoutConstraint!
-    
+        
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,13 +29,13 @@ class UUChatLeftMessageCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func configUIWithModel(){
+    func configUIWithModel(num: NSInteger){
         self.dateLabel.text = random()%2==0 ? "2014-09-21 18：32":""
-        self.contentLabel.text = self.getRandomStr() as String
+        self.contentLabel.text = self.getRandomStr(num) as String
     }
     
-    func getRandomStr() -> NSString{
+    func getRandomStr(num: NSInteger) -> NSString{
         let str = "两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在"
-        return (str as NSString).substringToIndex(random()%100+5)
+        return (str as NSString).substringToIndex(num)
     }
 }

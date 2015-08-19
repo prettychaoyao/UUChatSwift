@@ -40,27 +40,21 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        self.chatTableView.reloadData()
+    }
     
     // private method
+    
     @objc func batteryLevelChanged(notification: NSNotification) {
         
         let dict = NSDictionary(dictionary: notification.userInfo!)
         let keyboardValue = dict.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let keyboardFrame = keyboardValue.CGRectValue()
-        let ty = UIScreen.mainScreen().bounds.size.height - keyboardFrame.origin.y
+        let bootomDistance = UIScreen.mainScreen().bounds.size.height - keyboardValue.CGRectValue().origin.y
         let duration = Double(dict.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSNumber);
-
-//        UIView.animateWithDuration(duration, animations: { () -> Void in
-//            self.inputViewBottomContraint.constant = ty
-//            self.view.layoutIfNeeded()
-//            }) { (value:Bool) -> Void in
-//                let indexPath = NSIndexPath(forRow: self.dataArray.count-1, inSection: 0)
-//                self.chatTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true);
-//        }
         
-        UIView.animateWithDuration(0.2, animations: {
-            self.inputViewBottomContraint.constant = ty
+        UIView.animateWithDuration(duration, animations: {
+            self.inputViewBottomContraint.constant = bootomDistance
             self.view.layoutIfNeeded()
             }, completion: {
                 (value: Bool) in

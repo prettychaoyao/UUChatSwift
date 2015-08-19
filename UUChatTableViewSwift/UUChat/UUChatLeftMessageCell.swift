@@ -20,15 +20,11 @@ class UUChatLeftMessageCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = UITableViewCellSelectionStyle.None
         self.contentButton.titleLabel?.numberOfLines = 0;
         self.contentButton.contentEdgeInsets = UIEdgeInsetsMake(4, 29, 4, 9)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     func configUIWithModel(num: NSInteger){
         self.dateLabel.text = random()%2==0 ? "2014-09-21 18：32":""
         self.contentLabel.text = self.getRandomStr(num) as String

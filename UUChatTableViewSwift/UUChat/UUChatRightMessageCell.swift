@@ -19,13 +19,9 @@ class UUChatRightMessageCell: UITableViewCell {
         
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.contentButton.titleLabel?.numberOfLines = 0;
+        self.contentButton.contentEdgeInsets = UIEdgeInsetsMake(4, 29, 4, 9)
     }
     
     func configUIWithModel(num: NSInteger){

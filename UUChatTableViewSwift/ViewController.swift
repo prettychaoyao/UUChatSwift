@@ -15,32 +15,70 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     @IBOutlet weak var inputViewBottomContraint: NSLayoutConstraint!
     
-    var _dataArray: NSMutableArray!
+    var dataArray: NSMutableArray!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _dataArray = NSMutableArray(array: [])
+        self.dataArray = NSMutableArray(array: [])
         
         for var i=0; i<20; i++ {
-            _dataArray.addObject(random()%60+5)
+            self.dataArray.addObject(random()%60+5)
         }
-        
         chatTableView.registerNib(UINib(nibName: "UUChatLeftMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatLeftMessageCell")
         chatTableView.registerNib(UINib(nibName: "UUChatRightMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatRightMessageCell")
         chatTableView.estimatedRowHeight = 100;
+        
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "batteryLevelChanged:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
+    
+    // private method
+    @objc func batteryLevelChanged(notification: NSNotification) {
+        
+        let dict = NSDictionary(dictionary: notification.userInfo!)
+        let keyboardValue = dict.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardFrame = keyboardValue.CGRectValue()
+        let ty = UIScreen.mainScreen().bounds.size.height - keyboardFrame.origin.y
+        let duration = Double(dict.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSNumber);
+
+//        UIView.animateWithDuration(duration, animations: { () -> Void in
+//            self.inputViewBottomContraint.constant = ty
+//            self.view.layoutIfNeeded()
+//            }) { (value:Bool) -> Void in
+//                let indexPath = NSIndexPath(forRow: self.dataArray.count-1, inSection: 0)
+//                self.chatTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true);
+//        }
+        
+        UIView.animateWithDuration(0.2, animations: {
+            self.inputViewBottomContraint.constant = ty
+            self.view.layoutIfNeeded()
+            }, completion: {
+                (value: Bool) in
+                let indexPath = NSIndexPath(forRow: self.dataArray.count-1, inSection: 0)
+                self.chatTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true);
+        })
+    }
+
     
     
     // tableview delegate & dataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _dataArray.count;
+        return self.dataArray.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let num: NSInteger! = _dataArray.objectAtIndex(indexPath.row) as! NSInteger
+        let num: NSInteger! = self.dataArray.objectAtIndex(indexPath.row) as! NSInteger
         if num > 50{
             let cell:UUChatRightMessageCell = tableView.dequeueReusableCellWithIdentifier("UUChatRightMessageCell") as! UUChatRightMessageCell
             cell.configUIWithModel(num);

@@ -20,6 +20,18 @@
 		F0246E511B7C96F4007347D6 /* UUChatRightMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E4F1B7C96F4007347D6 /* UUChatRightMessageCell.swift */; };
 		F0246E521B7C96F4007347D6 /* UUChatRightMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */; };
 		F05A18001B7CB45200CC5E6B /* UUInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */; };
+		F05CA3B61B85A8E700C1755A /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3AA1B85A8E700C1755A /* Constraint.swift */; };
+		F05CA3B71B85A8E700C1755A /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3AB1B85A8E700C1755A /* ConstraintAttributes.swift */; };
+		F05CA3B81B85A8E700C1755A /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3AC1B85A8E700C1755A /* ConstraintDescription.swift */; };
+		F05CA3B91B85A8E700C1755A /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3AD1B85A8E700C1755A /* ConstraintItem.swift */; };
+		F05CA3BA1B85A8E700C1755A /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3AE1B85A8E700C1755A /* ConstraintMaker.swift */; };
+		F05CA3BB1B85A8E700C1755A /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3AF1B85A8E700C1755A /* ConstraintRelation.swift */; };
+		F05CA3BC1B85A8E700C1755A /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3B01B85A8E700C1755A /* Debugging.swift */; };
+		F05CA3BD1B85A8E700C1755A /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3B11B85A8E700C1755A /* EdgeInsets.swift */; };
+		F05CA3BE1B85A8E700C1755A /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3B21B85A8E700C1755A /* LayoutConstraint.swift */; };
+		F05CA3BF1B85A8E700C1755A /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3B31B85A8E700C1755A /* SnapKit.swift */; };
+		F05CA3C01B85A8E700C1755A /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3B41B85A8E700C1755A /* View+SnapKit.swift */; };
+		F05CA3C11B85A8E700C1755A /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3B51B85A8E700C1755A /* ViewController+SnapKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +72,18 @@
 		F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UUChatRightMessageCell.xib; sourceTree = "<group>"; };
 		F0246E531B7C9FA3007347D6 /* UUChatTableViewSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UUChatTableViewSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUInputView.swift; sourceTree = "<group>"; };
+		F05CA3AA1B85A8E700C1755A /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		F05CA3AB1B85A8E700C1755A /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
+		F05CA3AC1B85A8E700C1755A /* ConstraintDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintDescription.swift; sourceTree = "<group>"; };
+		F05CA3AD1B85A8E700C1755A /* ConstraintItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintItem.swift; sourceTree = "<group>"; };
+		F05CA3AE1B85A8E700C1755A /* ConstraintMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintMaker.swift; sourceTree = "<group>"; };
+		F05CA3AF1B85A8E700C1755A /* ConstraintRelation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintRelation.swift; sourceTree = "<group>"; };
+		F05CA3B01B85A8E700C1755A /* Debugging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debugging.swift; sourceTree = "<group>"; };
+		F05CA3B11B85A8E700C1755A /* EdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeInsets.swift; sourceTree = "<group>"; };
+		F05CA3B21B85A8E700C1755A /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
+		F05CA3B31B85A8E700C1755A /* SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
+		F05CA3B41B85A8E700C1755A /* View+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+SnapKit.swift"; sourceTree = "<group>"; };
+		F05CA3B51B85A8E700C1755A /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+SnapKit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +134,7 @@
 		F0246E111B7C90DC007347D6 /* UUChatTableViewSwift */ = {
 			isa = PBXGroup;
 			children = (
+				F05CA3A91B85A8E700C1755A /* Source */,
 				F0246E401B7C91B3007347D6 /* UUChat */,
 				F0246E121B7C90DC007347D6 /* AppDelegate.swift */,
 				F0246E141B7C90DC007347D6 /* ViewController.swift */,
@@ -151,6 +176,25 @@
 				F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */,
 			);
 			path = UUChat;
+			sourceTree = "<group>";
+		};
+		F05CA3A91B85A8E700C1755A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F05CA3AA1B85A8E700C1755A /* Constraint.swift */,
+				F05CA3AB1B85A8E700C1755A /* ConstraintAttributes.swift */,
+				F05CA3AC1B85A8E700C1755A /* ConstraintDescription.swift */,
+				F05CA3AD1B85A8E700C1755A /* ConstraintItem.swift */,
+				F05CA3AE1B85A8E700C1755A /* ConstraintMaker.swift */,
+				F05CA3AF1B85A8E700C1755A /* ConstraintRelation.swift */,
+				F05CA3B01B85A8E700C1755A /* Debugging.swift */,
+				F05CA3B11B85A8E700C1755A /* EdgeInsets.swift */,
+				F05CA3B21B85A8E700C1755A /* LayoutConstraint.swift */,
+				F05CA3B31B85A8E700C1755A /* SnapKit.swift */,
+				F05CA3B41B85A8E700C1755A /* View+SnapKit.swift */,
+				F05CA3B51B85A8E700C1755A /* ViewController+SnapKit.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,11 +331,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0246E4E1B7C9625007347D6 /* UUChatContentButton.swift in Sources */,
+				F05CA3B71B85A8E700C1755A /* ConstraintAttributes.swift in Sources */,
+				F05CA3BF1B85A8E700C1755A /* SnapKit.swift in Sources */,
 				F05A18001B7CB45200CC5E6B /* UUInputView.swift in Sources */,
+				F05CA3B61B85A8E700C1755A /* Constraint.swift in Sources */,
+				F05CA3C01B85A8E700C1755A /* View+SnapKit.swift in Sources */,
+				F05CA3BD1B85A8E700C1755A /* EdgeInsets.swift in Sources */,
+				F05CA3BE1B85A8E700C1755A /* LayoutConstraint.swift in Sources */,
+				F05CA3BA1B85A8E700C1755A /* ConstraintMaker.swift in Sources */,
 				F0246E511B7C96F4007347D6 /* UUChatRightMessageCell.swift in Sources */,
 				F0246E151B7C90DC007347D6 /* ViewController.swift in Sources */,
+				F05CA3BC1B85A8E700C1755A /* Debugging.swift in Sources */,
 				F0246E131B7C90DC007347D6 /* AppDelegate.swift in Sources */,
+				F05CA3C11B85A8E700C1755A /* ViewController+SnapKit.swift in Sources */,
 				F0246E471B7C91F3007347D6 /* UUChatLeftMessageCell.swift in Sources */,
+				F05CA3B81B85A8E700C1755A /* ConstraintDescription.swift in Sources */,
+				F05CA3BB1B85A8E700C1755A /* ConstraintRelation.swift in Sources */,
+				F05CA3B91B85A8E700C1755A /* ConstraintItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

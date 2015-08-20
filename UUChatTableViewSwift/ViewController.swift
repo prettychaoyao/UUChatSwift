@@ -26,23 +26,27 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         for var i=0; i<20; i++ {
             self.dataArray.addObject(random()%60+5)
         }
-        chatTableView.registerNib(UINib(nibName: "UUChatLeftMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatLeftMessageCell")
+        
+        chatTableView.registerClass(UUChatLeftMessageCell.classForKeyedArchiver(), forCellReuseIdentifier: "UUChatLeftMessageCell")
         chatTableView.registerNib(UINib(nibName: "UUChatRightMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatRightMessageCell")
         chatTableView.estimatedRowHeight = 100;
-        
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "batteryLevelChanged:", name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
+        super.viewDidAppear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         self.chatTableView.reloadData()
     }
+    
+    
     
     // private method
     
@@ -62,7 +66,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                 self.chatTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true);
         })
     }
-
+    
     
     
     // tableview delegate & dataSource
@@ -73,7 +77,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let num: NSInteger! = self.dataArray.objectAtIndex(indexPath.row) as! NSInteger
-        if num > 50{
+        if num%2 == 0 {
             let cell:UUChatRightMessageCell = tableView.dequeueReusableCellWithIdentifier("UUChatRightMessageCell") as! UUChatRightMessageCell
             cell.configUIWithModel(num);
             return cell;

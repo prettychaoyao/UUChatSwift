@@ -25,7 +25,7 @@ class UUChatRightMessageCell: UITableViewCell {
     }
     
     func configUIWithModel(num: NSInteger){
-        self.dateLabel.text = random()%2==0 ? "2014-09-21 18：32":""
+        self.dateLabel.text = random()%2==0 ? "2014-09-21 18:32":""
         self.contentLabel.text = self.getRandomStr(num) as String
 
     }

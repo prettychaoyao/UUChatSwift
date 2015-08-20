@@ -15,10 +15,8 @@
 		F0246E281B7C90DC007347D6 /* UUChatTableViewSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E271B7C90DC007347D6 /* UUChatTableViewSwiftTests.swift */; };
 		F0246E331B7C90DC007347D6 /* UUChatTableViewSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E321B7C90DC007347D6 /* UUChatTableViewSwiftUITests.swift */; };
 		F0246E471B7C91F3007347D6 /* UUChatLeftMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E451B7C91F3007347D6 /* UUChatLeftMessageCell.swift */; };
-		F0246E481B7C91F3007347D6 /* UUChatLeftMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0246E461B7C91F3007347D6 /* UUChatLeftMessageCell.xib */; };
 		F0246E4E1B7C9625007347D6 /* UUChatContentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E4D1B7C9625007347D6 /* UUChatContentButton.swift */; };
 		F0246E511B7C96F4007347D6 /* UUChatRightMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E4F1B7C96F4007347D6 /* UUChatRightMessageCell.swift */; };
-		F0246E521B7C96F4007347D6 /* UUChatRightMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */; };
 		F05A18001B7CB45200CC5E6B /* UUInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,10 +52,8 @@
 		F0246E321B7C90DC007347D6 /* UUChatTableViewSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUChatTableViewSwiftUITests.swift; sourceTree = "<group>"; };
 		F0246E341B7C90DC007347D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0246E451B7C91F3007347D6 /* UUChatLeftMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUChatLeftMessageCell.swift; sourceTree = "<group>"; };
-		F0246E461B7C91F3007347D6 /* UUChatLeftMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UUChatLeftMessageCell.xib; sourceTree = "<group>"; };
 		F0246E4D1B7C9625007347D6 /* UUChatContentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUChatContentButton.swift; sourceTree = "<group>"; };
 		F0246E4F1B7C96F4007347D6 /* UUChatRightMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUChatRightMessageCell.swift; sourceTree = "<group>"; };
-		F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UUChatRightMessageCell.xib; sourceTree = "<group>"; };
 		F0246E531B7C9FA3007347D6 /* UUChatTableViewSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UUChatTableViewSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,9 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				F0246E451B7C91F3007347D6 /* UUChatLeftMessageCell.swift */,
-				F0246E461B7C91F3007347D6 /* UUChatLeftMessageCell.xib */,
 				F0246E4F1B7C96F4007347D6 /* UUChatRightMessageCell.swift */,
-				F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */,
 				F0246E4D1B7C9625007347D6 /* UUChatContentButton.swift */,
 				F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */,
 			);
@@ -257,9 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0246E481B7C91F3007347D6 /* UUChatLeftMessageCell.xib in Resources */,
 				F0246E1D1B7C90DC007347D6 /* LaunchScreen.storyboard in Resources */,
-				F0246E521B7C96F4007347D6 /* UUChatRightMessageCell.xib in Resources */,
 				F0246E1A1B7C90DC007347D6 /* Assets.xcassets in Resources */,
 				F0246E181B7C90DC007347D6 /* Main.storyboard in Resources */,
 			);

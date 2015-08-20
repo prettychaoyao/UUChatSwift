@@ -26,10 +26,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         for var i=0; i<20; i++ {
             self.dataArray.addObject(random()%60+5)
         }
-        chatTableView.registerNib(UINib(nibName: "UUChatLeftMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatLeftMessageCell")
-        chatTableView.registerNib(UINib(nibName: "UUChatRightMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatRightMessageCell")
-        chatTableView.estimatedRowHeight = 100;
         
+        chatTableView.estimatedRowHeight = 50;
     }
     
     override func viewWillAppear(animated: Bool) {

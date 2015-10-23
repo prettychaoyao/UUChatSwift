@@ -31,6 +31,7 @@
 		F05CA3BF1B85A8E700C1755A /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3B31B85A8E700C1755A /* SnapKit.swift */; };
 		F05CA3C01B85A8E700C1755A /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3B41B85A8E700C1755A /* View+SnapKit.swift */; };
 		F05CA3C11B85A8E700C1755A /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3B51B85A8E700C1755A /* ViewController+SnapKit.swift */; };
+		F0CABF941B870F8500BA1ED8 /* TakePhotoCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CABF931B870F8500BA1ED8 /* TakePhotoCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		F05CA3B31B85A8E700C1755A /* SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
 		F05CA3B41B85A8E700C1755A /* View+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+SnapKit.swift"; sourceTree = "<group>"; };
 		F05CA3B51B85A8E700C1755A /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+SnapKit.swift"; sourceTree = "<group>"; };
+		F0CABF931B870F8500BA1ED8 /* TakePhotoCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */,
 				F0246E4D1B7C9625007347D6 /* UUChatContentButton.swift */,
 				F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */,
+				F0CABF931B870F8500BA1ED8 /* TakePhotoCenter.swift */,
 			);
 			path = UUChat;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				F0246E4E1B7C9625007347D6 /* UUChatContentButton.swift in Sources */,
 				F05CA3B71B85A8E700C1755A /* ConstraintAttributes.swift in Sources */,
 				F05CA3BF1B85A8E700C1755A /* SnapKit.swift in Sources */,
+				F0CABF941B870F8500BA1ED8 /* TakePhotoCenter.swift in Sources */,
 				F05A18001B7CB45200CC5E6B /* UUInputView.swift in Sources */,
 				F05CA3B61B85A8E700C1755A /* Constraint.swift in Sources */,
 				F05CA3C01B85A8E700C1755A /* View+SnapKit.swift in Sources */,

@@ -29,7 +29,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         chatTableView.registerClass(UUChatLeftMessageCell.classForKeyedArchiver(), forCellReuseIdentifier: "UUChatLeftMessageCell")
         chatTableView.registerNib(UINib(nibName: "UUChatRightMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatRightMessageCell")
-        chatTableView.estimatedRowHeight = 100;
+        chatTableView.estimatedRowHeight = 100
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,16 +54,16 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         let dict = NSDictionary(dictionary: notification.userInfo!)
         let keyboardValue = dict.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let bootomDistance = UIScreen.mainScreen().bounds.size.height - keyboardValue.CGRectValue().origin.y
-        let duration = Double(dict.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSNumber);
+        let bottomDistance = UIScreen.mainScreen().bounds.size.height - keyboardValue.CGRectValue().origin.y
+        let duration = Double(dict.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSNumber)
         
         UIView.animateWithDuration(duration, animations: {
-            self.inputViewBottomContraint.constant = bootomDistance
+            self.inputViewBottomContraint.constant = bottomDistance
             self.view.layoutIfNeeded()
             }, completion: {
                 (value: Bool) in
                 let indexPath = NSIndexPath(forRow: self.dataArray.count-1, inSection: 0)
-                self.chatTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true);
+                self.chatTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         })
     }
     
@@ -72,25 +72,46 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     // tableview delegate & dataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataArray.count;
+        return self.dataArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let num: NSInteger! = self.dataArray.objectAtIndex(indexPath.row) as! NSInteger
         if num%2 == 0 {
             let cell:UUChatRightMessageCell = tableView.dequeueReusableCellWithIdentifier("UUChatRightMessageCell") as! UUChatRightMessageCell
-            cell.configUIWithModel(num);
-            return cell;
+            cell.configUIWithModel(num)
+            return cell
         }
         else {
             let cell:UUChatLeftMessageCell = tableView.dequeueReusableCellWithIdentifier("UUChatLeftMessageCell") as! UUChatLeftMessageCell
-            cell.configUIWithModel(num);
-            return cell;
+            cell.configUIWithModel(num)
+            return cell
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.view.endEditing(true)
     }
+    
+    
+    // action
+    
+    @IBAction func sendImage(btn:UIButton) {
+        self.view.endEditing(true)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let libraryAction = UIAlertAction(title: "本地相册", style: .Default) { (action:UIAlertAction) -> Void in
+            
+        }
+        let takePhotoAction = UIAlertAction(title: "拍照", style: .Default) { (action:UIAlertAction) -> Void in
+            
+        }
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        alert.addAction(cancelAction)
+        alert.addAction(libraryAction)
+        alert.addAction(takePhotoAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 }
+
 

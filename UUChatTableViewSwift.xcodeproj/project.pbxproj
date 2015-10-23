@@ -17,7 +17,6 @@
 		F0246E471B7C91F3007347D6 /* UUChatLeftMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E451B7C91F3007347D6 /* UUChatLeftMessageCell.swift */; };
 		F0246E4E1B7C9625007347D6 /* UUChatContentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E4D1B7C9625007347D6 /* UUChatContentButton.swift */; };
 		F0246E511B7C96F4007347D6 /* UUChatRightMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E4F1B7C96F4007347D6 /* UUChatRightMessageCell.swift */; };
-		F0246E521B7C96F4007347D6 /* UUChatRightMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */; };
 		F05A18001B7CB45200CC5E6B /* UUInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */; };
 		F05CA3B61B85A8E700C1755A /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3AA1B85A8E700C1755A /* Constraint.swift */; };
 		F05CA3B71B85A8E700C1755A /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CA3AB1B85A8E700C1755A /* ConstraintAttributes.swift */; };
@@ -68,7 +67,6 @@
 		F0246E451B7C91F3007347D6 /* UUChatLeftMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUChatLeftMessageCell.swift; sourceTree = "<group>"; };
 		F0246E4D1B7C9625007347D6 /* UUChatContentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUChatContentButton.swift; sourceTree = "<group>"; };
 		F0246E4F1B7C96F4007347D6 /* UUChatRightMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUChatRightMessageCell.swift; sourceTree = "<group>"; };
-		F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UUChatRightMessageCell.xib; sourceTree = "<group>"; };
 		F0246E531B7C9FA3007347D6 /* UUChatTableViewSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UUChatTableViewSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUInputView.swift; sourceTree = "<group>"; };
 		F05CA3AA1B85A8E700C1755A /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			children = (
 				F0246E451B7C91F3007347D6 /* UUChatLeftMessageCell.swift */,
 				F0246E4F1B7C96F4007347D6 /* UUChatRightMessageCell.swift */,
-				F0246E501B7C96F4007347D6 /* UUChatRightMessageCell.xib */,
 				F0246E4D1B7C9625007347D6 /* UUChatContentButton.swift */,
 				F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */,
 				F0CABF931B870F8500BA1ED8 /* TakePhotoCenter.swift */,
@@ -302,7 +299,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0246E1D1B7C90DC007347D6 /* LaunchScreen.storyboard in Resources */,
-				F0246E521B7C96F4007347D6 /* UUChatRightMessageCell.xib in Resources */,
 				F0246E1A1B7C90DC007347D6 /* Assets.xcassets in Resources */,
 				F0246E181B7C90DC007347D6 /* Main.storyboard in Resources */,
 			);

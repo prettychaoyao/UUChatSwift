@@ -28,13 +28,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         }
         
         chatTableView.registerClass(UUChatLeftMessageCell.classForKeyedArchiver(), forCellReuseIdentifier: "UUChatLeftMessageCell")
-        chatTableView.registerNib(UINib(nibName: "UUChatRightMessageCell", bundle: nil), forCellReuseIdentifier: "UUChatRightMessageCell")
+        chatTableView.registerClass(UUChatRightMessageCell.classForKeyedArchiver(), forCellReuseIdentifier: "UUChatRightMessageCell")
         chatTableView.estimatedRowHeight = 100
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "batteryLevelChanged:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -50,7 +50,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     // private method
     
-    @objc func batteryLevelChanged(notification: NSNotification) {
+    @objc func keyboardFrameChanged(notification: NSNotification) {
         
         let dict = NSDictionary(dictionary: notification.userInfo!)
         let keyboardValue = dict.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue

@@ -9,6 +9,9 @@
 import UIKit
 
 @objc(UUChatLeftMessageCell)
+
+
+
 class UUChatLeftMessageCell: UITableViewCell {
 
     internal var dateLabel: UILabel!
@@ -17,21 +20,17 @@ class UUChatLeftMessageCell: UITableViewCell {
     internal var contentButton: UIButton!
     
     internal var contentLabel: UILabel!
-        
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        
-        
-    }
 
-    func configUIWithModel(num: NSInteger){
-        
         // 日期
         dateLabel = UILabel()
         contentView.addSubview(dateLabel)
-        dateLabel.font = UIFont.systemFontOfSize(12)
+        dateLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
         dateLabel.textColor = UIColor.grayColor()
         dateLabel.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(contentView)
@@ -56,14 +55,14 @@ class UUChatLeftMessageCell: UITableViewCell {
         // 内容frame辅助
         contentLabel = UILabel()
         contentView.addSubview(contentLabel)
-        contentLabel.font = UIFont.systemFontOfSize(14)
+        contentLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         contentLabel.numberOfLines = 0
         contentLabel.textColor = UIColor.grayColor()
         contentLabel.snp_makeConstraints { (make) -> Void in
             make.leading.equalTo(90)
-            make.trailing.equalTo(-40)
+            make.width.lessThanOrEqualTo(contentView).multipliedBy(0.6)
             make.top.equalTo(headImageView).offset(10)
-            make.bottom.equalTo(-20).priority(250)
+            make.bottom.equalTo(-20).priorityLow()
         }
         
         // 内容视图
@@ -76,21 +75,25 @@ class UUChatLeftMessageCell: UITableViewCell {
             make.top.equalTo(headImageView)
             make.bottom.equalTo(contentLabel.snp_bottom).offset(10)
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func configUIWithModel(num: NSInteger){
         
-        dateLabel.text = random()%2==0 ? "2014-09-21 18:32":""
+        dateLabel.text = num%3==0 ? "2014-09-21 18:32":""
         contentLabel.text = getRandomStr(num) as String
     }
     
     func getRandomStr(num: NSInteger) -> NSString{
-        let str = "两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在两者互转的一种可行的途径是在"
+        let str = "不仅是学生申请英国大学的必须材料，也是申请奖学金的重要标准之一。因为在英国招生官的眼中，只有克服语言问题， 外国学生才能完全适应异国的求学生活，同时雅思考试的分数也是反映考生学习、思维能力高低的重要参考，所以很多英国大学都将雅思成绩当做给学生颁发奖学金 的重要标准。众所周知，国外的大学普遍比较重视对中国学生实践能力的考察，尤其是申请英国硕士，有些名牌大学的商学院甚至不接收没有工作经验的申请人，可见 拥有丰富实践经验的学生将更有优势。提醒广大英国留学生：如果学生想申请助研金和助教金，具有助教与助研的工作经验则是十分必要的"
         return (str as NSString).substringToIndex(num)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        for view:UIView in contentView.subviews {
-            view.removeFromSuperview()
-        }
     }
 }

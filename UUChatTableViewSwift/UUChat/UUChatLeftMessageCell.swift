@@ -61,7 +61,7 @@ class UUChatLeftMessageCell: UITableViewCell {
         contentLabel.textColor = UIColor.grayColor()
         contentLabel.snp_makeConstraints { (make) -> Void in
             make.leading.equalTo(90)
-            make.trailing.equalTo(-40)
+            make.width.lessThanOrEqualTo(contentView).multipliedBy(0.6)
             make.top.equalTo(headImageView).offset(10)
             make.bottom.equalTo(-20).priority(250)
         }

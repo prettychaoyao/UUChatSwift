@@ -42,7 +42,7 @@ class UUChatLeftMessageCell: UITableViewCell {
         headImageView = UIButton()
         contentView.addSubview(headImageView)
         headImageView.layer.borderWidth = 4
-        headImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        headImageView.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5).CGColor
         headImageView.layer.cornerRadius = 25
         headImageView.clipsToBounds = true
         headImageView.setImage(UIImage(named: "headImage"), forState: UIControlState.Normal)
@@ -67,7 +67,7 @@ class UUChatLeftMessageCell: UITableViewCell {
         }
         
         // 内容视图
-        contentButton = UIButton();
+        contentButton = UIButton()
         contentView.insertSubview(contentButton, belowSubview: contentLabel)
         contentButton.setBackgroundImage(UIImage(named: "left_message_back"), forState: UIControlState.Normal)
         contentButton.snp_makeConstraints { (make) -> Void in

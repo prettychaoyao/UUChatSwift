@@ -16,18 +16,18 @@ class UUChatRightMessageCell: UITableViewCell {
     @IBOutlet weak var contentButton: UIButton!
     
     @IBOutlet weak var contentLabel: UILabel!
-        
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        self.contentButton.titleLabel?.numberOfLines = 0;
+        self.contentButton.titleLabel?.numberOfLines = 0
         self.contentButton.contentEdgeInsets = UIEdgeInsetsMake(4, 29, 4, 9)
     }
     
     func configUIWithModel(num: NSInteger){
         self.dateLabel.text = random()%2==0 ? "2014-09-21 18:32":""
         self.contentLabel.text = self.getRandomStr(num) as String
-
+        
     }
     
     func getRandomStr(num: NSInteger) -> NSString{

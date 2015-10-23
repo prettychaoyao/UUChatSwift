@@ -10,6 +10,6 @@ import UIKit
 
 class UUChatContentButton: UIButton {
     
-    let cellHeight:Float = 0;
+    let cellHeight:Float = 0
     
 }

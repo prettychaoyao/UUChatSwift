@@ -17,17 +17,13 @@ class UUChatLeftMessageCell: UITableViewCell {
     internal var contentButton: UIButton!
     
     internal var contentLabel: UILabel!
-        
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        
-        
-    }
 
-    func configUIWithModel(num: NSInteger){
-        
         // 日期
         dateLabel = UILabel()
         contentView.addSubview(dateLabel)
@@ -61,7 +57,7 @@ class UUChatLeftMessageCell: UITableViewCell {
         contentLabel.textColor = UIColor.grayColor()
         contentLabel.snp_makeConstraints { (make) -> Void in
             make.leading.equalTo(90)
-            make.width.lessThanOrEqualTo(contentView).multipliedBy(0.6)
+            make.width.lessThanOrEqualTo(contentView).multipliedBy(0.7)
             make.top.equalTo(headImageView).offset(10)
             make.bottom.equalTo(-20).priority(250)
         }
@@ -76,8 +72,20 @@ class UUChatLeftMessageCell: UITableViewCell {
             make.top.equalTo(headImageView)
             make.bottom.equalTo(contentLabel.snp_bottom).offset(10)
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-        dateLabel.text = random()%2==0 ? "2014-09-21 18:32":""
+    }
+
+    func configUIWithModel(num: NSInteger){
+        
+        dateLabel.text = num%2==0 ? "2014-09-21 18:32":""
         contentLabel.text = getRandomStr(num) as String
     }
     
@@ -89,8 +97,6 @@ class UUChatLeftMessageCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        for view:UIView in contentView.subviews {
-            view.removeFromSuperview()
-        }
     }
+    
 }

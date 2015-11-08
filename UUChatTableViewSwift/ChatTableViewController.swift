@@ -61,7 +61,6 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         self.view.addSubview(inputBackView)
         inputBackView.snp_makeConstraints { (make) -> Void in
             make.leading.trailing.bottom.equalTo(self.view)
-            make.height.equalTo(49)
         }
         
         chatTableView = UITableView.init(frame: CGRectZero, style: .Plain)

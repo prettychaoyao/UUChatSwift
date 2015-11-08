@@ -8,11 +8,13 @@
 
 import UIKit
 
-class UUInputView: UIView {
+class UUInputView: UIView, UITextViewDelegate{
 
     var leftButton: UIButton!
     var rightButton: UIButton!
     var contentTextView: UITextView!
+    var placeHolderLabel: UILabel!
+//    var contentViewHeight: NSLayoutConstraint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +36,7 @@ class UUInputView: UIView {
         rightButton.setImage(UIImage(named: "chat_voice_record"), forState: .Normal)
         rightButton.snp_makeConstraints { (make) -> Void in
             make.trailing.bottom.equalTo(self).offset(-8)
-            make.width.height.equalTo(30)
+            make.height.width.equalTo(30)
         }
         
         contentTextView = UITextView()
@@ -42,12 +44,23 @@ class UUInputView: UIView {
         contentTextView.layer.cornerRadius = 4
         contentTextView.layer.borderWidth = 0.5
         contentTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
-        contentTextView.backgroundColor = UIColor.yellowColor()
+        contentTextView.delegate = self
         contentTextView.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(rightButton.snp_right).offset(8)
-            make.right.equalTo(leftButton.snp_left).offset(-8)
+            make.leading.equalTo(self).offset(45)
+            make.trailing.equalTo(self).offset(-45)
             make.top.equalTo(self).offset(8)
             make.bottom.equalTo(self).offset(-8)
+            make.height.equalTo(30)
+//            self.contentViewHeight = make.height.equalTo(30).constraint
+        }
+        
+        placeHolderLabel = UILabel()
+        placeHolderLabel.text = "请在这里输入文本内容"
+        placeHolderLabel.textColor = UIColor.lightGrayColor()
+        placeHolderLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        contentTextView.addSubview(placeHolderLabel)
+        placeHolderLabel.snp_makeConstraints { (make) -> Void in
+            make.center.equalTo(contentTextView)
         }
 }
     
@@ -55,10 +68,17 @@ class UUInputView: UIView {
         super.init(coder: aDecoder)
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.blackColor().colorWithAlphaComponent(0.1).CGColor
+    func textViewDidBeginEditing(textView: UITextView) {
+        placeHolderLabel.hidden = true
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        placeHolderLabel.hidden = !textView.text.isEmpty
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        
+//        contentViewHeight.constant = textView.contentSize.height
     }
     
     @IBAction func sendImage(btn:UIButton) {

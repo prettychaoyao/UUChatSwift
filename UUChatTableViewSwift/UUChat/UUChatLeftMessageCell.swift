@@ -33,7 +33,7 @@ class UUChatLeftMessageCell: UITableViewCell {
         dateLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
         dateLabel.textColor = UIColor.grayColor()
         dateLabel.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(contentView)
+            make.top.equalTo(contentView).offset(4)
             make.centerX.equalTo(contentView)
         }
         

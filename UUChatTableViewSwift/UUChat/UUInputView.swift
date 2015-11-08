@@ -10,13 +10,50 @@ import UIKit
 
 class UUInputView: UIView {
 
-    @IBOutlet weak var leftButton: UIButton!
+    var leftButton: UIButton!
+    var rightButton: UIButton!
+    var contentTextView: UITextView!
     
-    @IBOutlet weak var rightButton: UIButton!
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
+        leftButton = UIButton()
+        self.addSubview(leftButton)
+        leftButton.setImage(UIImage(named: "chat_voice_record"), forState: .Normal)
+        leftButton.snp_makeConstraints { (make) -> Void in
+            make.leading.equalTo(self).offset(8)
+            make.bottom.equalTo(self).offset(-8)
+            make.width.height.equalTo(30)
+        }
+
+        rightButton = UIButton()
+        self.addSubview(rightButton)
+        rightButton.setImage(UIImage(named: "chat_voice_record"), forState: .Normal)
+        rightButton.snp_makeConstraints { (make) -> Void in
+            make.trailing.bottom.equalTo(self).offset(-8)
+            make.width.height.equalTo(30)
+        }
+        
+        contentTextView = UITextView()
+        self.addSubview(contentTextView)
+        contentTextView.layer.cornerRadius = 4
+        contentTextView.layer.borderWidth = 0.5
+        contentTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        contentTextView.backgroundColor = UIColor.yellowColor()
+        contentTextView.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(rightButton.snp_right).offset(8)
+            make.right.equalTo(leftButton.snp_left).offset(-8)
+            make.top.equalTo(self).offset(8)
+            make.bottom.equalTo(self).offset(-8)
+        }
+}
     
-    @IBOutlet weak var contentTextField: UITextField!
-    
-    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +62,7 @@ class UUInputView: UIView {
     }
     
     @IBAction func sendImage(btn:UIButton) {
-        self.contentTextField.resignFirstResponder()
+        self.contentTextView.resignFirstResponder()
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         let libraryAction = UIAlertAction(title: "本地相册", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in

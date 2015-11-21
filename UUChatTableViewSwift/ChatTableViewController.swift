@@ -64,6 +64,7 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         
         //TODO: I don't know how to get constraint from snapkit's methods.
         //It doesn't works.     why.why.why...
+        //https://github.com/SnapKit/SnapKit/tree/feature/protocol-api#1-references
         //inputViewConstraint = make.bottom.equalTo(view).constraint
         
         // temporary method

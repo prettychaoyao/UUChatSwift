@@ -53,6 +53,7 @@ class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, 
             make.bottom.equalTo(self).offset(-8)
             make.height.greaterThanOrEqualTo(30)
         }
+        // temporary method
         contentViewHeightConstraint = NSLayoutConstraint(
             item: contentTextView,
             attribute: NSLayoutAttribute.Height,

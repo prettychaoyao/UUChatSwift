@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "ADD53CF8321DF4B3CC14FBBF01B64B7E947A7E71",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5726F78CACADAE7BD24B35EEE5D0F81897D84BB8" : 0,
+    "ADD53CF8321DF4B3CC14FBBF01B64B7E947A7E71" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CBC86450-3DEE-4D7E-899A-9C27CE4BEC72",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5726F78CACADAE7BD24B35EEE5D0F81897D84BB8" : "",
+    "ADD53CF8321DF4B3CC14FBBF01B64B7E947A7E71" : "UUChatSwift\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "UUChatTableViewSwift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "UUChatTableViewSwift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ZhipingYang\/UUChartView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5726F78CACADAE7BD24B35EEE5D0F81897D84BB8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ZhipingYang\/UUChatSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ADD53CF8321DF4B3CC14FBBF01B64B7E947A7E71"
+    }
+  ]
+}

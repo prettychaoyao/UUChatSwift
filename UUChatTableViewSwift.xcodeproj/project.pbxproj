@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6557CB0A1BEF9014006225E1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557CB091BEF9014006225E1 /* RootViewController.swift */; };
 		F0246E131B7C90DC007347D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E121B7C90DC007347D6 /* AppDelegate.swift */; };
-		F0246E151B7C90DC007347D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E141B7C90DC007347D6 /* ViewController.swift */; };
-		F0246E181B7C90DC007347D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0246E161B7C90DC007347D6 /* Main.storyboard */; };
+		F0246E151B7C90DC007347D6 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E141B7C90DC007347D6 /* ChatTableViewController.swift */; };
 		F0246E1A1B7C90DC007347D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0246E191B7C90DC007347D6 /* Assets.xcassets */; };
 		F0246E1D1B7C90DC007347D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0246E1B1B7C90DC007347D6 /* LaunchScreen.storyboard */; };
 		F0246E281B7C90DC007347D6 /* UUChatTableViewSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E271B7C90DC007347D6 /* UUChatTableViewSwiftTests.swift */; };
@@ -51,10 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6557CB091BEF9014006225E1 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		F0246E0F1B7C90DC007347D6 /* UUChatTableViewSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UUChatTableViewSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0246E121B7C90DC007347D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0246E141B7C90DC007347D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F0246E171B7C90DC007347D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F0246E141B7C90DC007347D6 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		F0246E191B7C90DC007347D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0246E1C1B7C90DC007347D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0246E1E1B7C90DC007347D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 				F05CA3A91B85A8E700C1755A /* Source */,
 				F0246E401B7C91B3007347D6 /* UUChat */,
 				F0246E121B7C90DC007347D6 /* AppDelegate.swift */,
-				F0246E141B7C90DC007347D6 /* ViewController.swift */,
-				F0246E161B7C90DC007347D6 /* Main.storyboard */,
+				F0246E141B7C90DC007347D6 /* ChatTableViewController.swift */,
+				6557CB091BEF9014006225E1 /* RootViewController.swift */,
 				F0246E191B7C90DC007347D6 /* Assets.xcassets */,
 				F0246E1B1B7C90DC007347D6 /* LaunchScreen.storyboard */,
 				F0246E1E1B7C90DC007347D6 /* Info.plist */,
@@ -300,7 +300,6 @@
 			files = (
 				F0246E1D1B7C90DC007347D6 /* LaunchScreen.storyboard in Resources */,
 				F0246E1A1B7C90DC007347D6 /* Assets.xcassets in Resources */,
-				F0246E181B7C90DC007347D6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,8 +334,9 @@
 				F05CA3BD1B85A8E700C1755A /* EdgeInsets.swift in Sources */,
 				F05CA3BE1B85A8E700C1755A /* LayoutConstraint.swift in Sources */,
 				F05CA3BA1B85A8E700C1755A /* ConstraintMaker.swift in Sources */,
+				6557CB0A1BEF9014006225E1 /* RootViewController.swift in Sources */,
 				F0246E511B7C96F4007347D6 /* UUChatRightMessageCell.swift in Sources */,
-				F0246E151B7C90DC007347D6 /* ViewController.swift in Sources */,
+				F0246E151B7C90DC007347D6 /* ChatTableViewController.swift in Sources */,
 				F05CA3BC1B85A8E700C1755A /* Debugging.swift in Sources */,
 				F0246E131B7C90DC007347D6 /* AppDelegate.swift in Sources */,
 				F05CA3C11B85A8E700C1755A /* ViewController+SnapKit.swift in Sources */,
@@ -379,14 +379,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F0246E161B7C90DC007347D6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F0246E171B7C90DC007347D6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F0246E1B1B7C90DC007347D6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

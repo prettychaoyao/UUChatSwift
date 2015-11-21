@@ -12,27 +12,25 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let showBtn = UIButton(type: .Custom)
+        showBtn.setTitle("Creat Chat Room", forState: .Normal)
+        showBtn.setTitleColor(UIColor.purpleColor(), forState: .Normal)
+        showBtn.addTarget(self, action: Selector("showChatRoom"), forControlEvents: .TouchUpInside)
+        showBtn.center = view.center
+        view.addSubview(showBtn)
+        
+        showBtn.snp_makeConstraints { (make) -> Void in
+            make.center.equalTo(view)
+        }
+        showBtn.contentEdgeInsets = UIEdgeInsetsMake(8, 20, 8, 20)
+        showBtn.layer.borderColor = UIColor.purpleColor().CGColor
+        showBtn.layer.borderWidth = 1
+        showBtn.layer.cornerRadius = 10
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    internal func showChatRoom() {
         let nvc = UINavigationController.init(rootViewController: ChatTableViewController())
         self.presentViewController(nvc, animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -8,13 +8,13 @@
 
 import UIKit
 
-class UUInputView: UIView, UITextViewDelegate{
+class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     var leftButton: UIButton!
     var rightButton: UIButton!
     var contentTextView: UITextView!
     var placeHolderLabel: UILabel!
-//    var contentViewHeight: NSLayoutConstraint!
+    var contentViewHeightConstraint: NSLayoutConstraint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,7 +33,8 @@ class UUInputView: UIView, UITextViewDelegate{
 
         rightButton = UIButton()
         self.addSubview(rightButton)
-        rightButton.setImage(UIImage(named: "chat_voice_record"), forState: .Normal)
+        rightButton.setImage(UIImage(named: "chat_take_picture"), forState: .Normal)
+        rightButton.addTarget(self, action: Selector("sendImage"), forControlEvents: .TouchUpInside)
         rightButton.snp_makeConstraints { (make) -> Void in
             make.trailing.bottom.equalTo(self).offset(-8)
             make.height.width.equalTo(30)
@@ -50,9 +51,19 @@ class UUInputView: UIView, UITextViewDelegate{
             make.trailing.equalTo(self).offset(-45)
             make.top.equalTo(self).offset(8)
             make.bottom.equalTo(self).offset(-8)
-            make.height.equalTo(30)
-//            self.contentViewHeight = make.height.equalTo(30).constraint
+            make.height.greaterThanOrEqualTo(30)
         }
+        contentViewHeightConstraint = NSLayoutConstraint(
+            item: contentTextView,
+            attribute: NSLayoutAttribute.Height,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.NotAnAttribute,
+            multiplier: 1,
+            constant: 30
+        )
+        contentViewHeightConstraint.priority = UILayoutPriorityDefaultHigh
+        self.addConstraint(contentViewHeightConstraint)
         
         placeHolderLabel = UILabel()
         placeHolderLabel.text = "请在这里输入文本内容"
@@ -76,28 +87,59 @@ class UUInputView: UIView, UITextViewDelegate{
         placeHolderLabel.hidden = !textView.text.isEmpty
     }
     
+    // adjust content's height from 30 t0 100
     func textViewDidChange(textView: UITextView) {
-        
-//        contentViewHeight.constant = textView.contentSize.height
+        let textContentH = textView.contentSize.height
+        let textHeight = textContentH>30 ? (textContentH<100 ? textContentH:100):30
+        contentViewHeightConstraint.constant = textHeight
     }
     
-    @IBAction func sendImage(btn:UIButton) {
+    func sendImage() {
         self.contentTextView.resignFirstResponder()
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-        let libraryAction = UIAlertAction(title: "本地相册", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
-            
+        let sheet = UIAlertController()
+        // is the device support camera?（iPod & Simulator）
+        if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            sheet.addAction(UIAlertAction.init(title: "Camera", style: .Default, handler: { _ in
+                self.showPhotoes(.Camera)
+            }))
         }
-        let takePhotoAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
-            
-        }
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        alert.addAction(cancelAction)
-        alert.addAction(libraryAction)
-        alert.addAction(takePhotoAction)
+        sheet.addAction(UIAlertAction.init(title: "PhotoLibrary", style: .Default, handler: { _ in
+            self.showPhotoes(.PhotoLibrary)
+        }))
+        sheet.addAction(UIAlertAction.init(title: "SavedPhotosAlbum", style: .Default, handler: { _ in
+            self.showPhotoes(.SavedPhotosAlbum)
+        }))
+        sheet.addAction(UIAlertAction.init(title: "Cancel", style: .Cancel, handler: nil))
         
+        
+        if let resppp:UIViewController? = self.responderViewController() {
+            resppp!.presentViewController(sheet, animated: true, completion: nil)
+        }
     }
     
+    func showPhotoes(source: UIImagePickerControllerSourceType) {
+        if let resppp:UIViewController? = self.responderViewController() {
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            controller.sourceType = source
+            controller.allowsEditing = source == .SavedPhotosAlbum ? true:false
+            resppp!.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
+}
+
+// find VC
+extension UIView {
     
-    
+    func responderViewController() -> UIViewController {
+        var responder: UIResponder! = nil
+        for var next = self.superview; (next != nil); next = next!.superview {
+            responder = next?.nextResponder()
+            if (responder!.isKindOfClass(UIViewController)){
+                return (responder as! UIViewController)
+            }
+        }
+        return (responder as! UIViewController)
+    }
 }

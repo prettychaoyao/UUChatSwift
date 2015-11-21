@@ -11,14 +11,12 @@ import UIKit
 private let leftCellId = "UUChatLeftMessageCell"
 private let rightCellId = "UUChatRightMessageCell"
 
-let MainScreenSize = UIScreen.mainScreen().bounds.size
-
 class ChatTableViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     var chatTableView: UITableView!
     var inputBackView: UUInputView!
     var dataArray: NSMutableArray!
-    
+    var inputViewConstraint: NSLayoutConstraint? = nil
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,9 +27,11 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         super.viewDidAppear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
+
+    //TODO: This method seems like would fix the problem of cells layout when Orientation changed.
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        self.chatTableView.reloadData()
+        //chatTableView.reloadData()
+        self.view.endEditing(true)
     }
 
     override func viewDidLoad() {
@@ -57,11 +57,32 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .Stop, target: self, action: Selector("backAction"))
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .Search, target: self, action: nil)
         
-        inputBackView = UUInputView.init(frame: CGRectMake(0, MainScreenSize.height-45, MainScreenSize.width, 45))
+        
+        
+        inputBackView = UUInputView()
         self.view.addSubview(inputBackView)
+        
+        //TODO: I don't know how to get constraint from snapkit's methods.
+        //It doesn't works.     why.why.why...
+        //inputViewConstraint = make.bottom.equalTo(view).constraint
+        
+        // temporary method
+        inputViewConstraint = NSLayoutConstraint(
+            item: inputBackView,
+            attribute: NSLayoutAttribute.Bottom,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: self.view,
+            attribute: NSLayoutAttribute.Bottom,
+            multiplier: 1.0,
+            constant: 0
+        )
         inputBackView.snp_makeConstraints { (make) -> Void in
-            make.leading.trailing.bottom.equalTo(self.view)
+            make.leading.trailing.equalTo(self.view)
         }
+        view.addConstraint(inputViewConstraint!)
+        
+        
+        
         
         chatTableView = UITableView.init(frame: CGRectZero, style: .Plain)
         chatTableView.dataSource = self
@@ -74,6 +95,7 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
             make.bottom.equalTo(inputBackView.snp_top)
         }
         chatTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        
     }
     
     // private method
@@ -90,11 +112,11 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         
         let dict = NSDictionary(dictionary: notification.userInfo!)
         let keyboardValue = dict.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let bottomDistance = MainScreenSize.height - keyboardValue.CGRectValue().origin.y
+        let bottomDistance = mainScreenSize().height - keyboardValue.CGRectValue().origin.y
         let duration = Double(dict.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSNumber)
         
         UIView.animateWithDuration(duration, animations: {
-//            self.inputViewBottomContraint.constant = bottomDistance
+            self.inputViewConstraint!.constant = -bottomDistance
             self.view.layoutIfNeeded()
             }, completion: {
                 (value: Bool) in
@@ -103,7 +125,9 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         })
     }
     
-    
+    private func mainScreenSize() -> CGSize {
+        return UIScreen.mainScreen().bounds.size
+    }
     
     // tableview delegate & dataSource
     

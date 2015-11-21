@@ -128,6 +128,19 @@ class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, 
             resppp!.presentViewController(controller, animated: true, completion: nil)
         }
     }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        responderViewController().dismissViewControllerAnimated(true) { () -> Void in
+            let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            // code
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.responderViewController().dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }
 
 // find VC

@@ -8,27 +8,53 @@
 
 import UIKit
 
-class TakePhotoCenter: NSObject {
+typealias PickImageBlock = (image: UIImage) -> Void
+
+class TakePhotoCenter: NSObject ,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    var successBlock:((UIImage) -> Void)?
+    var viewController:UIViewController!
+    var successBlock:PickImageBlock?
     
-    func takePhoto (vc:UIViewController!, handler: ((img:UIImage) -> Void)?) {
+    func takePhoto (viewController vc: UIViewController!, didSelected: PickImageBlock?) {
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        let libraryAction = UIAlertAction(title: "本地相册", style: .Default) { (action:UIAlertAction) -> Void in
-            
-        }
-        let takePhotoAction = UIAlertAction(title: "拍照", style: .Default) { (action:UIAlertAction) -> Void in
-            
-        }
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        alert.addAction(cancelAction)
-        alert.addAction(libraryAction)
-        alert.addAction(takePhotoAction)
-        vc.presentViewController(alert, animated: true, completion: nil)
+        viewController = vc
+        successBlock = didSelected
         
-        self.successBlock = { (UIImage) -> Void in
-            
+        let sheet = UIAlertController()
+        // is the device support camera?（iPod & Simulator）
+        if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            sheet.addAction(UIAlertAction.init(title: "Camera", style: .Default, handler: { _ in
+                self.showPhotoes(sourceType: .Camera)
+            }))
         }
+        sheet.addAction(UIAlertAction.init(title: "PhotoLibrary", style: .Default, handler: { _ in
+            self.showPhotoes(sourceType: .PhotoLibrary)
+        }))
+        sheet.addAction(UIAlertAction.init(title: "SavedPhotosAlbum", style: .Default, handler: { _ in
+            self.showPhotoes(sourceType: .SavedPhotosAlbum)
+        }))
+        sheet.addAction(UIAlertAction.init(title: "Cancel", style: .Cancel, handler: nil))
+        
+        viewController.presentViewController(sheet, animated: true, completion: nil)
+    }
+    
+    func showPhotoes(sourceType type: UIImagePickerControllerSourceType) {
+        let controller = UIImagePickerController()
+        controller.delegate = self
+        controller.sourceType = type
+        viewController.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        viewController.dismissViewControllerAnimated(true) { () -> Void in
+            if (self.successBlock != nil) {
+                let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+                self.successBlock!(image: image!)
+            }
+        }
+    }
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        viewController.dismissViewControllerAnimated(true, completion: nil)
     }
 }

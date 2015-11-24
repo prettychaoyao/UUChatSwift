@@ -15,12 +15,12 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
 
     var chatTableView: UITableView!
     var inputBackView: UUInputView!
-    var dataArray: NSMutableArray!
+    var dataArray: [AnyObject]!
     var inputViewConstraint: NSLayoutConstraint? = nil
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardFrameChanged:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -37,18 +37,15 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.dataArray = UUChatModel.creatRandomArray(count: 10)
+        
         initBaseViews()
         
-        
-        self.dataArray = NSMutableArray(array: [])
-        
-        for var i=0; i<20; i++ {
-            self.dataArray.addObject(random()%60+5)
-        }
         
         chatTableView.registerClass(UUChatLeftMessageCell.classForKeyedArchiver(), forCellReuseIdentifier: leftCellId)
         chatTableView.registerClass(UUChatRightMessageCell.classForKeyedArchiver(), forCellReuseIdentifier: rightCellId)
         chatTableView.estimatedRowHeight = 100
+        
     }
     
     func initBaseViews() {
@@ -64,6 +61,7 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         
         //TODO: I don't know how to get constraint from snapkit's methods.
         //It doesn't works.     why.why.why...
+        //https://github.com/SnapKit/SnapKit/tree/feature/protocol-api#1-references
         //inputViewConstraint = make.bottom.equalTo(view).constraint
         
         // temporary method
@@ -80,7 +78,20 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
             make.leading.trailing.equalTo(self.view)
         }
         view.addConstraint(inputViewConstraint!)
-        
+        inputBackView.sendMessage(
+            imageBlock: { [weak self](image:UIImage, textView:UITextView) -> Void in
+                self!.dataArray.append(UUChatModel.creatMessageFromMeByImage(image))
+                self!.chatTableView.reloadData()
+                self!.chatTableView.scrollToBottom(animation: true)
+            },
+            textBlock: { [weak self](text:String, textView:UITextView) -> Void in
+                self!.dataArray.append(UUChatModel.creatMessageFromMeByText(text))
+                self!.chatTableView.reloadData()
+                self!.chatTableView.scrollToBottom(animation: true)
+            },
+            voiceBlock: { [weak self](voice:NSData, textView:UITextView) -> Void in
+                
+        })
         
         
         
@@ -88,6 +99,7 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         chatTableView.dataSource = self
         chatTableView.delegate = self
         chatTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        chatTableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.Interactive
         chatTableView.estimatedRowHeight = 60
         self.view.addSubview(chatTableView)
         chatTableView.snp_makeConstraints { (make) -> Void in
@@ -120,8 +132,7 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
             self.view.layoutIfNeeded()
             }, completion: {
                 (value: Bool) in
-                let indexPath = NSIndexPath(forRow: self.dataArray.count-1, inSection: 0)
-                self.chatTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                self.chatTableView.scrollToBottom(animation: true)
         })
     }
     
@@ -136,15 +147,15 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let num: NSInteger! = self.dataArray.objectAtIndex(indexPath.row) as! NSInteger
-        if num%2 == 0 {
+        let model = dataArray[indexPath.row] as! UUChatModel
+        if model.from == .Me {
             let cell:UUChatRightMessageCell = tableView.dequeueReusableCellWithIdentifier(rightCellId) as! UUChatRightMessageCell
-            cell.configUIWithModel(num)
+            cell.configUIWithModel(model)
             return cell
         }
         else {
             let cell:UUChatLeftMessageCell = tableView.dequeueReusableCellWithIdentifier(leftCellId) as! UUChatLeftMessageCell
-            cell.configUIWithModel(num)
+            cell.configUIWithModel(model)
             return cell
         }
     }
@@ -152,7 +163,6 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.view.endEditing(true)
     }
-    
     
     // action
     
@@ -172,6 +182,8 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         alert.addAction(takePhotoAction)
         self.presentViewController(alert, animated: true, completion: nil)
     }
+
+    
 }
 
 

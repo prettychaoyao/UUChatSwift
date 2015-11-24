@@ -8,13 +8,21 @@
 
 import UIKit
 
-class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+typealias TextBlock  = (text:String,    textView:UITextView)->Void
+typealias ImageBlock = (image:UIImage,  textView:UITextView)->Void
+typealias VoiceBlock = (voice:NSData,   textView:UITextView)->Void
+
+class UUInputView: UIToolbar, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     var leftButton: UIButton!
     var rightButton: UIButton!
     var contentTextView: UITextView!
     var placeHolderLabel: UILabel!
     var contentViewHeightConstraint: NSLayoutConstraint!
+    
+    var sendTextBlock:TextBlock!
+    var sendImageBlock:ImageBlock!
+    var sendVoiceBlock:VoiceBlock!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,6 +54,8 @@ class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, 
         contentTextView.layer.borderWidth = 0.5
         contentTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
         contentTextView.delegate = self
+        contentTextView.returnKeyType = .Send
+        contentTextView.enablesReturnKeyAutomatically = true
         contentTextView.snp_makeConstraints { (make) -> Void in
             make.leading.equalTo(self).offset(45)
             make.trailing.equalTo(self).offset(-45)
@@ -80,12 +90,31 @@ class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, 
         super.init(coder: aDecoder)
     }
     
+    func sendMessage(imageBlock imageBlock:ImageBlock, textBlock:TextBlock, voiceBlock:VoiceBlock){
+        self.sendImageBlock = imageBlock
+        self.sendTextBlock = textBlock
+        self.sendVoiceBlock = voiceBlock
+    }
+    
+    //MARK: textViewDelegate
     func textViewDidBeginEditing(textView: UITextView) {
         placeHolderLabel.hidden = true
     }
     
     func textViewDidEndEditing(textView: UITextView) {
         placeHolderLabel.hidden = !textView.text.isEmpty
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text != "\n" {
+            return true
+        } else {
+            // send text
+            self.sendTextBlock!(text: contentTextView.text, textView: contentTextView)
+            textView.text = ""
+            self.textViewDidChange(textView)
+            return false
+        }
     }
     
     // adjust content's height from 30 t0 100
@@ -132,16 +161,16 @@ class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, 
             let controller = UIImagePickerController()
             controller.delegate = self
             controller.sourceType = source
-            controller.allowsEditing = source == .SavedPhotosAlbum ? true:false
+            controller.allowsEditing = true
             resppp!.presentViewController(controller, animated: true, completion: nil)
         }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
-        responderViewController().dismissViewControllerAnimated(true) { () -> Void in
-            let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-            // code
+        responderViewController().dismissViewControllerAnimated(true) { [weak self]() -> Void in
+            let image = info[UIImagePickerControllerEditedImage] as? UIImage
+            self!.sendImageBlock!(image: image!, textView: self!.contentTextView)
         }
     }
     

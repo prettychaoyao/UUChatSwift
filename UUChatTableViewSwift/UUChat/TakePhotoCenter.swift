@@ -8,14 +8,14 @@
 
 import UIKit
 
-typealias ImageBlock = (image: UIImage) -> Void
+typealias PickImageBlock = (image: UIImage) -> Void
 
 class TakePhotoCenter: NSObject ,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var viewController:UIViewController!
-    var successBlock:ImageBlock?
+    var successBlock:PickImageBlock?
     
-    func takePhoto (viewController vc: UIViewController!, didSelected: ImageBlock?) {
+    func takePhoto (viewController vc: UIViewController!, didSelected: PickImageBlock?) {
         
         viewController = vc
         successBlock = didSelected

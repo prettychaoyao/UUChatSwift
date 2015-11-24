@@ -64,7 +64,7 @@ class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, 
             constant: 30
         )
         contentViewHeightConstraint.priority = UILayoutPriorityDefaultHigh
-        self.addConstraint(contentViewHeightConstraint)
+        contentTextView.addConstraint(contentViewHeightConstraint)
         
         placeHolderLabel = UILabel()
         placeHolderLabel.text = "请在这里输入文本内容"
@@ -91,8 +91,16 @@ class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, 
     // adjust content's height from 30 t0 100
     func textViewDidChange(textView: UITextView) {
         let textContentH = textView.contentSize.height
+        print("output：\(textContentH)")
         let textHeight = textContentH>30 ? (textContentH<100 ? textContentH:100):30
-        contentViewHeightConstraint.constant = textHeight
+        UIView.animateWithDuration(0.2) { () -> Void in
+            self.contentViewHeightConstraint.constant = textHeight
+            self.layoutIfNeeded()
+            self.superview?.layoutIfNeeded()
+            let vc = self.responderViewController() as! ChatTableViewController
+            vc.view.layoutIfNeeded()
+            vc.chatTableView.scrollToBottom(animation: true)
+        }
     }
     
     func sendImage() {
@@ -143,17 +151,3 @@ class UUInputView: UIView, UITextViewDelegate, UIImagePickerControllerDelegate, 
     
 }
 
-// find VC
-extension UIView {
-    
-    func responderViewController() -> UIViewController {
-        var responder: UIResponder! = nil
-        for var next = self.superview; (next != nil); next = next!.superview {
-            responder = next?.nextResponder()
-            if (responder!.isKindOfClass(UIViewController)){
-                return (responder as! UIViewController)
-            }
-        }
-        return (responder as! UIViewController)
-    }
-}

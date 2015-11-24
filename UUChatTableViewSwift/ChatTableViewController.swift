@@ -20,7 +20,7 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardFrameChanged:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -89,6 +89,7 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         chatTableView.dataSource = self
         chatTableView.delegate = self
         chatTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        chatTableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.Interactive
         chatTableView.estimatedRowHeight = 60
         self.view.addSubview(chatTableView)
         chatTableView.snp_makeConstraints { (make) -> Void in
@@ -153,7 +154,6 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.view.endEditing(true)
     }
-    
     
     // action
     

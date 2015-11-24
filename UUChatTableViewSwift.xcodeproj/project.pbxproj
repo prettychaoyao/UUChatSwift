@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6557CB0A1BEF9014006225E1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557CB091BEF9014006225E1 /* RootViewController.swift */; };
+		6563E9781C00E68100E891C0 /* UUChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6563E9771C00E68100E891C0 /* UUChatModel.swift */; };
+		65A2AB0F1C04AD920006D735 /* UUViewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2AB0E1C04AD920006D735 /* UUViewsCategory.swift */; };
 		F0246E131B7C90DC007347D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E121B7C90DC007347D6 /* AppDelegate.swift */; };
 		F0246E151B7C90DC007347D6 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0246E141B7C90DC007347D6 /* ChatTableViewController.swift */; };
 		F0246E1A1B7C90DC007347D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0246E191B7C90DC007347D6 /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		6557CB091BEF9014006225E1 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		6563E9771C00E68100E891C0 /* UUChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUChatModel.swift; sourceTree = "<group>"; };
+		65A2AB0E1C04AD920006D735 /* UUViewsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUViewsCategory.swift; sourceTree = "<group>"; };
 		F0246E0F1B7C90DC007347D6 /* UUChatTableViewSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UUChatTableViewSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0246E121B7C90DC007347D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0246E141B7C90DC007347D6 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				F0246E4D1B7C9625007347D6 /* UUChatContentButton.swift */,
 				F05A17FF1B7CB45200CC5E6B /* UUInputView.swift */,
 				F0CABF931B870F8500BA1ED8 /* TakePhotoCenter.swift */,
+				6563E9771C00E68100E891C0 /* UUChatModel.swift */,
+				65A2AB0E1C04AD920006D735 /* UUViewsCategory.swift */,
 			);
 			path = UUChat;
 			sourceTree = "<group>";
@@ -324,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A2AB0F1C04AD920006D735 /* UUViewsCategory.swift in Sources */,
 				F0246E4E1B7C9625007347D6 /* UUChatContentButton.swift in Sources */,
 				F05CA3B71B85A8E700C1755A /* ConstraintAttributes.swift in Sources */,
 				F05CA3BF1B85A8E700C1755A /* SnapKit.swift in Sources */,
@@ -338,6 +345,7 @@
 				F0246E511B7C96F4007347D6 /* UUChatRightMessageCell.swift in Sources */,
 				F0246E151B7C90DC007347D6 /* ChatTableViewController.swift in Sources */,
 				F05CA3BC1B85A8E700C1755A /* Debugging.swift in Sources */,
+				6563E9781C00E68100E891C0 /* UUChatModel.swift in Sources */,
 				F0246E131B7C90DC007347D6 /* AppDelegate.swift in Sources */,
 				F05CA3C11B85A8E700C1755A /* ViewController+SnapKit.swift in Sources */,
 				F0246E471B7C91F3007347D6 /* UUChatLeftMessageCell.swift in Sources */,

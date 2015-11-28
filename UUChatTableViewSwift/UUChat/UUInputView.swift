@@ -128,7 +128,7 @@ class UUInputView: UIToolbar, UITextViewDelegate, UIImagePickerControllerDelegat
             self.superview?.layoutIfNeeded()
             let vc = self.responderViewController() as! ChatTableViewController
             vc.view.layoutIfNeeded()
-            vc.chatTableView.scrollToBottom(animation: true)
+            vc.chatTableView.scrollToLastIndexOfCell(animation: true)
         }
     }
     

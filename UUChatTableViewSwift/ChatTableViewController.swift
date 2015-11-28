@@ -20,7 +20,11 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardFrameChanged:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardFrameChanged:"), name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardFrameChanged:"), name: UIKeyboardWillHideNotification, object: nil)
+        
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -82,12 +86,12 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
             imageBlock: { [weak self](image:UIImage, textView:UITextView) -> Void in
                 self!.dataArray.append(UUChatModel.creatMessageFromMeByImage(image))
                 self!.chatTableView.reloadData()
-                self!.chatTableView.scrollToBottom(animation: true)
+                self!.chatTableView.scrollToLastIndexOfCell(animation: true)
             },
             textBlock: { [weak self](text:String, textView:UITextView) -> Void in
                 self!.dataArray.append(UUChatModel.creatMessageFromMeByText(text))
                 self!.chatTableView.reloadData()
-                self!.chatTableView.scrollToBottom(animation: true)
+                self!.chatTableView.scrollToLastIndexOfCell(animation: true)
             },
             voiceBlock: { [weak self](voice:NSData, textView:UITextView) -> Void in
                 
@@ -127,12 +131,15 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
         let bottomDistance = mainScreenSize().height - keyboardValue.CGRectValue().origin.y
         let duration = Double(dict.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSNumber)
         
-        UIView.animateWithDuration(duration, animations: {
-            self.inputViewConstraint!.constant = -bottomDistance
-            self.view.layoutIfNeeded()
-            }, completion: {
-                (value: Bool) in
-                self.chatTableView.scrollToBottom(animation: true)
+        UIView.animateWithDuration(duration,
+            animations: {
+                self.inputViewConstraint!.constant = -bottomDistance
+                self.view.layoutIfNeeded()
+            },
+            completion: { (value: Bool) in
+                if notification.name == UIKeyboardWillShowNotification {
+                    self.chatTableView.scrollToLastIndexOfCell(animation: true)
+                }
         })
     }
     

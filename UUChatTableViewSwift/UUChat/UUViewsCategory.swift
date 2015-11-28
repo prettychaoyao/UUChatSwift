@@ -24,13 +24,14 @@ extension UIView {
     }
 }
 
-
-extension UIScrollView {
+extension UITableView {
     
-    func scrollToBottom(animation animation:Bool) {
-        let visibleBottomRect = CGRectMake(0, contentSize.height-bounds.size.height, 1, bounds.size.height)
-        UIView.animateWithDuration(animation ? 0.2 : 0.01) { () -> Void in
-            self.scrollRectToVisible(visibleBottomRect, animated: true)
+    func scrollToLastIndexOfCell(animation animation:Bool) {
+        if (self.numberOfSections >= 1) {
+            let numberOfRows = self.numberOfRowsInSection(self.numberOfSections-1)
+            let indexPath = NSIndexPath.init(forRow: numberOfRows-1, inSection: self.numberOfSections-1)
+            self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: animation)
         }
     }
 }
+

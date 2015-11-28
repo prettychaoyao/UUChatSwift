@@ -66,10 +66,10 @@ class UUInputView: UIToolbar, UITextViewDelegate, UIImagePickerControllerDelegat
         // temporary method
         contentViewHeightConstraint = NSLayoutConstraint(
             item: contentTextView,
-            attribute: NSLayoutAttribute.Height,
-            relatedBy: NSLayoutRelation.Equal,
+            attribute: .Height,
+            relatedBy: .Equal,
             toItem: nil,
-            attribute: NSLayoutAttribute.NotAnAttribute,
+            attribute: .NotAnAttribute,
             multiplier: 1,
             constant: 30
         )

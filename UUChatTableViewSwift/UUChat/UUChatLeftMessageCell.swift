@@ -8,25 +8,23 @@
 
 import UIKit
 
-@objc(UUChatLeftMessageCell)
-
-
+private let LeftBubleImage = UIImage(named: "left_message_back")
 
 class UUChatLeftMessageCell: UITableViewCell {
 
-    internal var dateLabel: UILabel!
-    internal var headImageView: UIButton!
-    internal var nameLabel: UILabel!
-    internal var contentButton: UIButton!
+    var dateLabel: UILabel!
+    var headImageView: UIButton!
+    var nameLabel: UILabel!
+    var contentButton: UIButton!
     
-    internal var contentLabel: UILabel!
+    var contentLabel: UILabel!
     
-    var imageHeightConstraint: NSLayoutConstraint!
+    private var imageHeightConstraint: NSLayoutConstraint!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+        selectionStyle = .None
 
         // 日期
         dateLabel = UILabel()
@@ -45,7 +43,7 @@ class UUChatLeftMessageCell: UITableViewCell {
         headImageView.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5).CGColor
         headImageView.layer.cornerRadius = 25
         headImageView.clipsToBounds = true
-        headImageView.setImage(UIImage(named: "headImage"), forState: UIControlState.Normal)
+        headImageView.setImage(UIImage(named: "headImage"), forState: .Normal)
         headImageView.snp_makeConstraints { (make) -> Void in
             make.width.equalTo(50)
             make.height.equalTo(50)
@@ -70,7 +68,7 @@ class UUChatLeftMessageCell: UITableViewCell {
         contentButton = UIButton()
         contentView.insertSubview(contentButton, belowSubview: contentLabel)
         contentButton.clipsToBounds = true
-        contentButton.setBackgroundImage(UIImage(named: "left_message_back"), forState: UIControlState.Normal)
+        contentButton.setBackgroundImage(LeftBubleImage, forState: .Normal)
         contentButton.snp_makeConstraints { (make) -> Void in
             make.leading.equalTo(contentView).offset(70)
             make.trailing.equalTo(contentLabel.snp_trailing).offset(10)
@@ -81,16 +79,15 @@ class UUChatLeftMessageCell: UITableViewCell {
         // temporary method
         imageHeightConstraint = NSLayoutConstraint(
             item: contentButton,
-            attribute: NSLayoutAttribute.Height,
-            relatedBy: NSLayoutRelation.LessThanOrEqual,
+            attribute: .Height,
+            relatedBy: .LessThanOrEqual,
             toItem: nil,
-            attribute: NSLayoutAttribute.NotAnAttribute,
+            attribute: .NotAnAttribute,
             multiplier: 1,
             constant: 1000
         )
         imageHeightConstraint.priority = UILayoutPriorityRequired
         contentButton.addConstraint(imageHeightConstraint)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -101,12 +98,16 @@ class UUChatLeftMessageCell: UITableViewCell {
         dateLabel.text = model.time
         switch model.messageType {
         case UUChatMessageType.Text:
-            self.contentLabel.text = model.text
+            contentLabel.text = model.text
+            contentButton.setBackgroundImage(LeftBubleImage, forState: .Normal)
+            imageHeightConstraint.constant = 1000
+            contentButton.layer.cornerRadius = 0
             break
         case .Image:
-            self.contentLabel.text = ""
-            self.contentButton.setBackgroundImage(model.image, forState: .Normal)
-            self.imageHeightConstraint.constant = UIScreen.mainScreen().bounds.size.width*0.6
+            contentLabel.text = ""
+            contentButton.setBackgroundImage(model.image, forState: .Normal)
+            imageHeightConstraint.constant = UIScreen.mainScreen().bounds.size.width*0.6
+            contentButton.layer.cornerRadius = 10
             break
         case .Voice:
             break

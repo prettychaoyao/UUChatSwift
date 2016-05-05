@@ -66,10 +66,10 @@ class UUInputView: UIToolbar, UITextViewDelegate, UIImagePickerControllerDelegat
         // temporary method
         contentViewHeightConstraint = NSLayoutConstraint(
             item: contentTextView,
-            attribute: NSLayoutAttribute.Height,
-            relatedBy: NSLayoutRelation.Equal,
+            attribute: .Height,
+            relatedBy: .Equal,
             toItem: nil,
-            attribute: NSLayoutAttribute.NotAnAttribute,
+            attribute: .NotAnAttribute,
             multiplier: 1,
             constant: 30
         )
@@ -128,7 +128,7 @@ class UUInputView: UIToolbar, UITextViewDelegate, UIImagePickerControllerDelegat
             self.superview?.layoutIfNeeded()
             let vc = self.responderViewController() as! ChatTableViewController
             vc.view.layoutIfNeeded()
-            vc.chatTableView.scrollToBottom(animation: true)
+            vc.chatTableView.scrollToLastIndexOfCell(animation: true)
         }
     }
     

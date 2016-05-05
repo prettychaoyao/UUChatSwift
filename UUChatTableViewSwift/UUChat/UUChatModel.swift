@@ -69,12 +69,17 @@ class UUChatModel: AnyObject {
         var array = [UUChatModel]()
         for _ in 0...(count) {
             let model:UUChatModel = UUChatModel()
-            model.messageType = .Text
-            model.from = random()%2==0 ? .Me:.Other
+            let type = random()%2
+            model.messageType = type==0 ? .Text : .Image
+            if type==0 {
+                model.text = UUChatModel.randomStr()
+            } else {
+                model.image = UIImage(named: "headImage")
+            }
+            model.from = random()%2==0 ? .Me : .Other
             model.userName = model.from == .Me ? "Daniel":"Sister"
             model.time = random()%2==1 ? NSDate.init(timeIntervalSince1970: NSTimeInterval(random()%1000)).description : ""
             model.headImage = UIImage(named: "headImage")
-            model.text = UUChatModel.randomStr()
             array.append(model)
         }
         return array

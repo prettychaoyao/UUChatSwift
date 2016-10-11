@@ -20,8 +20,8 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardFrameChanged:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardFrameChanged:"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ChatTableViewController.keyboardFrameChanged(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ChatTableViewController.keyboardFrameChanged(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -36,7 +36,7 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataArray = UUChatModel.creatRandomArray(count: 10)
+        dataArray = UUChatModel.creatRandomArray(10)
         
         initBaseViews()
         
@@ -48,7 +48,7 @@ class ChatTableViewController: UIViewController,UITableViewDataSource,UITableVie
     func initBaseViews() {
         
         title = "UUChat - Swift2"
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .Stop, target: self, action: Selector("backAction"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .Stop, target: self, action: #selector(ChatTableViewController.backAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .Search, target: self, action: nil)
         
         

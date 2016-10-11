@@ -16,7 +16,7 @@ class RootViewController: UIViewController {
         let showBtn = UIButton(type: .Custom)
         showBtn.setTitle("Creat Chat Room", forState: .Normal)
         showBtn.setTitleColor(UIColor.purpleColor(), forState: .Normal)
-        showBtn.addTarget(self, action: Selector("showChatRoom"), forControlEvents: .TouchUpInside)
+        showBtn.addTarget(self, action: #selector(RootViewController.showChatRoom), forControlEvents: .TouchUpInside)
         showBtn.center = view.center
         view.addSubview(showBtn)
         

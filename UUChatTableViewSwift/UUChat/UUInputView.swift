@@ -42,7 +42,7 @@ class UUInputView: UIToolbar, UITextViewDelegate, UIImagePickerControllerDelegat
         rightButton = UIButton()
         self.addSubview(rightButton)
         rightButton.setImage(UIImage(named: "chat_take_picture"), forState: .Normal)
-        rightButton.addTarget(self, action: Selector("sendImage"), forControlEvents: .TouchUpInside)
+        rightButton.addTarget(self, action: #selector(UUInputView.sendImage), forControlEvents: .TouchUpInside)
         rightButton.snp_makeConstraints { (make) -> Void in
             make.trailing.bottom.equalTo(self).offset(-8)
             make.height.width.equalTo(30)

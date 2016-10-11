@@ -124,7 +124,7 @@ public extension View {
         
         :returns: the constraints made
     */
-    public func snp_prepareConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> [Constraint] {
+    public func snp_prepareConstraints(file: String = #file, line: UInt = #line, @noescape closure: (make: ConstraintMaker) -> Void) -> [Constraint] {
         return ConstraintMaker.prepareConstraints(view: self, file: file, line: line, closure: closure)
     }
     
@@ -133,7 +133,7 @@ public extension View {
         
         :param: closure that will be passed the `ConstraintMaker` to make the constraints with
     */
-    public func snp_makeConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
+    public func snp_makeConstraints(file: String = #file, line: UInt = #line, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
         ConstraintMaker.makeConstraints(view: self, file: file, line: line, closure: closure)
     }
     
@@ -144,7 +144,7 @@ public extension View {
     
         :param: closure that will be passed the `ConstraintMaker` to update the constraints with
     */
-    public func snp_updateConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
+    public func snp_updateConstraints(file: String = #file, line: UInt = #line, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
         ConstraintMaker.updateConstraints(view: self, file: file, line: line, closure: closure)
     }
     
@@ -153,7 +153,7 @@ public extension View {
     
         :param: closure that will be passed the `ConstraintMaker` to remake the constraints with
     */
-    public func snp_remakeConstraints(file: String = __FILE__, line: UInt = __LINE__, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
+    public func snp_remakeConstraints(file: String = #file, line: UInt = #line, @noescape closure: (make: ConstraintMaker) -> Void) -> Void {
         ConstraintMaker.remakeConstraints(view: self, file: file, line: line, closure: closure)
     }
     
